@@ -9,6 +9,10 @@ function Class.new()
 end
 export type cls = typeof(Class.new(...))
 
+function Class.Connect(self: cls, func: (...any) -> (...any))
+	self.OnInvoke = func
+end
+
 function Class.Invoke(self: cls, ...)
 	return self.OnInvoke(...)	
 end
